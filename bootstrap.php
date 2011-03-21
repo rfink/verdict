@@ -19,6 +19,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+define('CLASS_DIRECTORY', dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR);
+
+
 /**
  * Autoloader class for verdict tests and example cases
  * @author rfink
@@ -33,7 +37,7 @@ class Verdict_Autoloader {
 	 */
 	public static function load($className) {
 
-		$dirString = implode(DIRECTORY_SEPARATOR, explode('_', $className, 1));
+		$dirString = implode(DIRECTORY_SEPARATOR, explode('_', $className, -1));
 		require_once(CLASS_DIRECTORY . $dirString . DIRECTORY_SEPARATOR . $className . '.php');
 
 	}
@@ -42,6 +46,9 @@ class Verdict_Autoloader {
 
 // Add our autoload class onto the SPL autoload stack
 spl_autoload_register(array('Verdict_Autoloader', 'load'));
+
+
+$E = new Decision_Engine();
 
 
 
