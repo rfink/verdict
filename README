@@ -1,0 +1,5 @@
+Verdict Decision Engine
+========================
+Context based engine used for making decisions based on input
+
+php >= 5.1.2
