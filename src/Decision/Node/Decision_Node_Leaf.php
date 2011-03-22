@@ -52,6 +52,13 @@ class Decision_Node_Leaf extends Decision_Node_Abstract {
 	 */
 	public function evaluate() {
 
+		// TODO: What if we have NO condition?
+		if (!($this->_ConditionNode instanceof Decision_Comparison_Interface)) {
+
+			return $this;
+
+		}
+
 		// First, attempt to evaluate our current condition
 		//   If it does not evaluate, discontinue traversing this path
 		if (!$this->_ConditionNode->compare()) {

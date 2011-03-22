@@ -70,6 +70,8 @@ abstract class Decision_Node_Abstract implements Decision_Node_Interface {
 	 */
 	public function evaluate() {
 
+		// TODO: What if we have no condition?
+
 		// First, attempt to evaluate our current condition
 		//   If it does not evaluate, discontinue traversing this path
 		if (!$this->_ConditionNode->compare()) {
@@ -81,7 +83,7 @@ abstract class Decision_Node_Abstract implements Decision_Node_Interface {
 		// Iterate through our internal nodes and walk them
 		foreach ($this->_nodesArray as $Node) {
 
-			$Value = $Node->compare();
+			$Value = $Node->evaluate();
 
 			if ($Value instanceof Decision_Node_Leaf) {
 
