@@ -2,4 +2,9 @@ Verdict Decision Engine
 ========================
 Context based engine used for making decisions based on input
 
-php >= 5.1.2
+Notes
+------
+This class assumes you are using some kind of autoloader, there are no
+	requires or includes anywhere except the tests / bootstrap.
+
+Requires php version >= 5.1.2

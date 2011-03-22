@@ -49,8 +49,15 @@ class Decision_Engine {
 	/**
 	 * Evaluate our tree to find our decision
 	 * @return Decision_Node_Value
+	 * @throws InvalidArgumentException
 	 */
 	public function evaluate() {
+
+		if (!($this->_RootNode instanceof Decision_Node_Abstract)) {
+
+			throw new InvalidArgumentException('Root node must be of type Decision_Node_Abstract');
+
+		}
 
 		return $this->_RootNode->evaluate();
 

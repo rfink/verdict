@@ -20,7 +20,8 @@
  */
 
 
-define('CLASS_DIRECTORY', dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR);
+define('VERDICT_DIRECTORY', dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src');
+define('PEAR_DIRECTORY', '/usr/share/pear');
 
 
 /**
@@ -33,12 +34,19 @@ class Verdict_Autoloader {
 	/**
 	 * Run our autoloading functionality
 	 * @param string $className
-	 * @return void
+	 * @return boolean
 	 */
 	public static function load($className) {
 
 		$dirString = implode(DIRECTORY_SEPARATOR, explode('_', $className, -1));
-		require_once(CLASS_DIRECTORY . $dirString . DIRECTORY_SEPARATOR . $className . '.php');
+		$fileName = VERDICT_DIRECTORY . DIRECTORY_SEPARATOR . $dirString . DIRECTORY_SEPARATOR . $className . '.php';
+
+		if (file_exists($fileName)) {
+			require_once($fileName);
+			return TRUE;
+		}
+
+		return FALSE;
 
 	}
 
@@ -46,9 +54,5 @@ class Verdict_Autoloader {
 
 // Add our autoload class onto the SPL autoload stack
 spl_autoload_register(array('Verdict_Autoloader', 'load'));
-
-
-$E = new Decision_Engine();
-
-
+set_include_path(get_include_path() . PATH_SEPARATOR . PEAR_DIRECTORY);
 
