@@ -40,6 +40,20 @@ abstract class Decision_Comparison_Abstract implements Decision_Comparison_Inter
 
 
 	/**
+	 * Instantiate our object, pass in our context/config vars
+	 * @param mixed $contextVar
+	 * @param mixed $config
+	 * @return Decision_Comparison_Abstract
+	 */
+	public function __construct($contextVar, $config) {
+
+		$this->set_context($contextVar);
+		$this->set_config($config);
+
+	}
+
+
+	/**
 	 * (non-PHPdoc)
 	 * @see php/Decision/Comparison/Decision_Comparison_Interface#set_context($contextVar)
 	 */

@@ -24,7 +24,7 @@
  * @author rfink
  * @since  Mar 19, 2011
  */
-abstract class Decision_Builder_Abstact extends Decision_Builder_Interface {
+abstract class Decision_Builder_Abstact implements Decision_Builder_Interface {
 
 	/**
 	 * Context model

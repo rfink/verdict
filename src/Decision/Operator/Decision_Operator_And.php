@@ -27,7 +27,7 @@
 class Decision_Operator_And extends Decision_Operator_Abstract {
 
 	/**
-	 *
+	 * Compare our left with our right node using logical 'AND'
 	 * @return boolean
 	 */
 	public function compare() {

@@ -33,9 +33,7 @@ class Decision_Engine_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_single_node() {
 
-		$Condition = new Decision_Comparison_Equals();
-		$Condition->set_config(TRUE);
-		$Condition->set_context(TRUE);
+		$Condition = new Decision_Comparison_Equals(TRUE, TRUE);
 
 		$Leaf = new Decision_Node_Leaf();
 

@@ -27,7 +27,7 @@
 class Decision_Operator_Xor extends Decision_Operator_Abstract {
 
 	/**
-	 * Execute our comparison
+	 * Execute our comparison using the logical 'XOR'
 	 * @return boolean
 	 */
 	public function compare() {

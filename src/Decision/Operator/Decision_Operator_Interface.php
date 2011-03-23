@@ -27,19 +27,21 @@
 interface Decision_Operator_Interface {
 
 	/**
-	 *
+	 * Set our left node to evaluate on the object
 	 * @param Decision_Node_Abstract $Node
+	 * @return Decision_Operator_Interface
 	 */
 	public function set_left_node(Decision_Node_Abstract $Node);
 
 	/**
-	 *
+	 * Set our right node to evaluate on the object
 	 * @param Decision_Node_Abstract $Node
+	 * @return Decision_Operator_Interface
 	 */
 	public function set_right_node(Decision_Node_Abstract $Node);
 
 	/**
-	 *
+	 * Execute our comparison and return the boolean result
 	 * @return boolean
 	 */
 	public function compare();

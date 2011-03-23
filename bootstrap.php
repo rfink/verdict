@@ -42,8 +42,10 @@ class Verdict_Autoloader {
 		$fileName = VERDICT_DIRECTORY . DIRECTORY_SEPARATOR . $dirString . DIRECTORY_SEPARATOR . $className . '.php';
 
 		if (file_exists($fileName)) {
+
 			require_once($fileName);
 			return TRUE;
+
 		}
 
 		return FALSE;

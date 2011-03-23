@@ -26,13 +26,32 @@
  */
 class Decision_Comparison_NotIn extends Decision_Comparison_Abstract {
 
+
+	/**
+	 * (non-PHPdoc)
+	 * @see php/Decision/Comparison/Decision_Comparison_Abstract#set_config($config)
+	 */
+	public function set_config($configVal) {
+
+		if (!is_array($configVal)) {
+
+			throw new InvalidArgumentException('Configuration must be an array');
+
+		}
+
+		parent::set_config($configVal);
+		return $this;
+
+	}
+
+
 	/**
 	 * (non-PHPdoc)
 	 * @see php/Decision/Comparison/Decision_Comparison_Interface#compare()
 	 */
 	public function compare() {
 
-		return !in_array($this->_context, (array) $this->_config);
+		return !in_array($this->_context, $this->_config);
 
 	}
 

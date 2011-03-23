@@ -27,7 +27,7 @@
 class Decision_Operator_Or extends Decision_Operator_Abstract {
 
 	/**
-	 * Execute our comparison
+	 * Execute our comparison using logical 'OR'
 	 * @return boolean
 	 */
 	public function compare() {

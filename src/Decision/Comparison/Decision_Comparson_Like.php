@@ -26,6 +26,33 @@
  */
 class Decision_Comparison_Like extends Decision_Comparison_Abstract {
 
+
+	/**
+	 * (non-PHPdoc)
+	 * @see php/Decision/Comparison/Decision_Comparison_Interface#set_context()
+	 */
+	public function set_context($contextVar) {
+
+		$this->_validate_as_string($contextVar);
+		parent::set_context($contextVar);
+		return $this;
+
+	}
+
+
+	/**
+	 * (non-PHPdoc)
+	 * @see php/Decision/Comparison/Decision_Comparison_Interface#set_config()
+	 */
+	public function set_config($config) {
+
+		$this->_validate_as_string($config);
+		parent::set_config($config);
+		return $this;
+
+	}
+
+
 	/**
 	 * (non-PHPdoc)
 	 * @see php/Decision/Comparison/Decision_Comparison_Interface#compare()
@@ -33,6 +60,22 @@ class Decision_Comparison_Like extends Decision_Comparison_Abstract {
 	public function compare() {
 
 		return (stripos($this->_context, $this->_config) !== FALSE);
+
+	}
+
+
+	/**
+	 * Validate our given value to see if it can be converted to string
+	 * @param mixed $val
+	 * @throws InvalidArgumentException
+	 */
+	protected function _validate_as_string($val) {
+
+		if (!is_string($val) || (is_object($val) && !method_exists($val, '__toString'))) {
+
+			throw new InvalidArgumentException('Value must be a string or have the __toString method defined');
+
+		}
 
 	}
 
