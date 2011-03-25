@@ -34,9 +34,58 @@ abstract class Decision_Node_Abstract implements Decision_Node_Interface {
 
 	/**
 	 * Condition node, when evaluated, returns TRUE or FALSE
-	 * @var Decision_Comparison_Interface
+	 * @var Decision_Comparison_Abstract
 	 */
 	protected $_ConditionNode = null;
+
+	/**
+	 * Pointer to our parent node
+	 * @var Decision_Node_Branch
+	 */
+	protected $_ParentNode = null;
+
+	/**
+	 * Key that is unique to our node
+	 * @var mixed
+	 */
+	protected $_key = null;
+
+
+	/**
+	 * Set a pointer to our parent node
+	 * @param Decision_Node_Branch $Node
+	 * @return Decision_Node_Abstract
+	 */
+	public function set_parent_node(Decision_Node_Branch $Node) {
+
+		$this->_ParentNode = $Node;
+		return $this;
+
+	}
+
+
+	/**
+	 * Set our key
+	 * @param mixed $key
+	 * @return Decision_Node_Abstract
+	 */
+	public function set_key($key) {
+
+		$this->_key = $key;
+		return $this;
+
+	}
+
+
+	/**
+	 * Get our key value
+	 * @return mixed
+	 */
+	public function get_key() {
+
+		return $this->_key;
+
+	}
 
 
 	/**
