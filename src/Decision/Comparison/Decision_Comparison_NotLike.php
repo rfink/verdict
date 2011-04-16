@@ -59,7 +59,7 @@ class Decision_Comparison_NotLike extends Decision_Comparison_Abstract {
 	 */
 	public function compare() {
 
-		return (stripos($this->_context, $this->_config) === FALSE);
+		return (stripos((string) $this->_context, (string) $this->_config) === FALSE);
 
 	}
 
@@ -71,7 +71,7 @@ class Decision_Comparison_NotLike extends Decision_Comparison_Abstract {
 	 */
 	protected function _validate_as_string($val) {
 
-		if (!is_string($val) || (is_object($val) && !method_exists($val, '__toString'))) {
+		if (is_array($val) || (is_object($val) && !method_exists($val, '__toString'))) {
 
 			throw new InvalidArgumentException('Value must be a string or have the __toString method defined');
 
