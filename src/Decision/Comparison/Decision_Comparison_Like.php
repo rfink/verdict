@@ -34,7 +34,7 @@ class Decision_Comparison_Like extends Decision_Comparison_Abstract {
 	public function set_context($contextVar) {
 
 		$this->_validate_as_string($contextVar);
-		parent::set_context($contextVar);
+		parent::set_context((string) $contextVar);
 		return $this;
 
 	}
@@ -47,7 +47,7 @@ class Decision_Comparison_Like extends Decision_Comparison_Abstract {
 	public function set_config($config) {
 
 		$this->_validate_as_string($config);
-		parent::set_config($config);
+		parent::set_config((string) $config);
 		return $this;
 
 	}
@@ -59,7 +59,7 @@ class Decision_Comparison_Like extends Decision_Comparison_Abstract {
 	 */
 	public function compare() {
 
-		return (stripos((string) $this->_context, (string) $this->_config) !== FALSE);
+		return (stripos($this->_context, $this->_config) !== FALSE);
 
 	}
 
