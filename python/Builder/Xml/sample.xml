@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<root>
+	<node>
+		<conditionNode>
+			<conditionClass>Equal</conditionClass>
+			<contextProperty>MarketingProgramID</contextProperty>
+			<configValue>316</configValue>
+		</conditionNode>
+		<nodeType>Branch</nodeType>
+		<childNode>
+			<conditionNode>
+				<conditionClass>NotEqual</conditionClass>
+				<contextProperty>AgentID</contextProperty>
+				<configValue>1000</configValue>
+				<childConditions />
+			</conditionNode>
+			<nodeType>Leaf</nodeType>
+			<nodeValue>SOME VALUE</nodeValue>
+			<childNode />
+		</childNode>
+		<childNode>
+		
+		</childNode>
+	</node>
+	<context>
+		<MarketingProgramID>320</MarketingProgramID>
+		<AgentID>320</AgentID>
+		<CallDirection>Inbound</CallDirection>
+	</context>
+</root>

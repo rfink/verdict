@@ -1,0 +1,7 @@
+'''
+
+'''
+
+class Leaf(NodeAbstract):
+	
+	pass

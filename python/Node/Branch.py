@@ -1,0 +1,7 @@
+'''
+
+'''
+
+class Branch(NodeAbstract):
+	
+	pass
