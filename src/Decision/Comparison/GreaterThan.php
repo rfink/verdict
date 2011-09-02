@@ -19,12 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Comparison;
+use Verdict\Decision\Comparison\ComparisonAbstract;
+
 /**
- * Determine if our context is less than our config
+ * See if our context was greater than the configuration
  * @author rfink
  * @since  Feb 21, 2011
  */
-class Decision_Comparison_LessThan extends Decision_Comparison_Abstract {
+class GreaterThan extends ComparisonAbstract {
 
 	/**
 	 * (non-PHPdoc)
@@ -32,7 +35,7 @@ class Decision_Comparison_LessThan extends Decision_Comparison_Abstract {
 	 */
 	public function compare() {
 
-		return $this->_context < $this->_config;
+		return $this->_context > $this->_config;
 
 	}
 

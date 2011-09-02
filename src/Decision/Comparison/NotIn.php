@@ -19,12 +19,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Comparison;
+use Verdict\Decision\Comparison\ComparisonAbstract;
+
 /**
- * See if our context was greater than the configuration
+ * Check to see if our context is NOT in the config array
  * @author rfink
- * @since  Feb 21, 2011
+ * @since  Feb 22, 2011
  */
-class Decision_Comparison_GreaterThan extends Decision_Comparison_Abstract {
+class NotIn extends ComparisonAbstract {
+
+
+	/**
+	 * (non-PHPdoc)
+	 * @see php/Decision/Comparison/Decision_Comparison_Abstract#set_config($config)
+	 */
+	public function set_config($configVal) {
+
+		if (!is_array($configVal)) {
+
+			throw new \InvalidArgumentException('Configuration must be an array');
+
+		}
+
+		parent::set_config($configVal);
+		return $this;
+
+	}
+
 
 	/**
 	 * (non-PHPdoc)
@@ -32,7 +54,7 @@ class Decision_Comparison_GreaterThan extends Decision_Comparison_Abstract {
 	 */
 	public function compare() {
 
-		return $this->_context > $this->_config;
+		return !in_array($this->_context, $this->_config);
 
 	}
 

@@ -19,31 +19,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Comparison;
+use Verdict\Decision\Comparison\ComparisonAbstract;
+
 /**
- * Interface for defining comparison class required methods
+ * Compare our context and config for identity, i.e. same type and value
  * @author rfink
  * @since  Feb 21, 2011
  */
-interface Decision_Comparison_Interface {
+class Identical extends ComparisonAbstract {
 
 	/**
-	 * Set the context (actual value) on the object
-	 * @param mixed $contextVar
-	 * @return Decision_Comparison_Interface
+	 * (non-PHPdoc)
+	 * @see php/Decision/Comparison/Decision_Comparison_Interface#compare()
 	 */
-	public function set_context($contextVar);
+	public function compare() {
 
-	/**
-	 * Set the config value (desired value) on the object
-	 * @param mixed $configVal
-	 * @return Decision_Comparison_Interface
-	 */
-	public function set_config($configVal);
+		return $this->_context === $this->_config;
 
-	/**
-	 * Compare our internal variables
-	 * @return boolean
-	 */
-	public function compare();
+	}
 
 }

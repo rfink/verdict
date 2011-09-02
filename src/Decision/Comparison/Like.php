@@ -19,12 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Comparison;
+use Verdict\Decision\Comparison\ComparisonAbstract;
+
 /**
- * Ensure that our config is NOT contained in the context string
+ * Check to see if our config (as a string) is contained inside the context
  * @author rfink
- * @since  Feb 22, 2011
+ * @since  Feb 21, 2011
  */
-class Decision_Comparison_NotLike extends Decision_Comparison_Abstract {
+class Like extends ComparisonAbstract {
 
 
 	/**
@@ -59,7 +62,7 @@ class Decision_Comparison_NotLike extends Decision_Comparison_Abstract {
 	 */
 	public function compare() {
 
-		return (stripos($this->_context, $this->_config) === FALSE);
+		return (stripos($this->_context, $this->_config) !== FALSE);
 
 	}
 
@@ -73,7 +76,7 @@ class Decision_Comparison_NotLike extends Decision_Comparison_Abstract {
 
 		if (is_array($val) || (is_object($val) && !method_exists($val, '__toString'))) {
 
-			throw new InvalidArgumentException('Value must be a string or have the __toString method defined');
+			throw new \InvalidArgumentException('Value must be a string or have the __toString method defined');
 
 		}
 

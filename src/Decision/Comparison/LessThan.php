@@ -19,31 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Comparison;
+use Verdict\Decision\Comparison\ComparisonAbstract;
+
 /**
- * Check to see if our context is in the config array
+ * Determine if our context is less than our config
  * @author rfink
- * @since  Feb 22, 2011
+ * @since  Feb 21, 2011
  */
-class Decision_Comparison_In extends Decision_Comparison_Abstract {
-
-
-	/**
-	 * (non-PHPdoc)
-	 * @see php/Decision/Comparison/Decision_Comparison_Abstract#set_config($config)
-	 */
-	public function set_config($configVal) {
-
-		if (!is_array($configVal)) {
-
-			throw new InvalidArgumentException('Configuration must be an array');
-
-		}
-
-		parent::set_config($configVal);
-		return $this;
-
-	}
-
+class LessThan extends ComparisonAbstract {
 
 	/**
 	 * (non-PHPdoc)
@@ -51,7 +35,7 @@ class Decision_Comparison_In extends Decision_Comparison_Abstract {
 	 */
 	public function compare() {
 
-		return in_array($this->_context, $this->_config);
+		return $this->_context < $this->_config;
 
 	}
 

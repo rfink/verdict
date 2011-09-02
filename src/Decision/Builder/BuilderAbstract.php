@@ -20,6 +20,7 @@
  */
 
 namespace Verdict\Decision\Builder;
+use Verdict\Decision\Builder\BuilderInterface;
 
 /**
  * Abstract base class for decision builder context classes to extend
@@ -40,7 +41,7 @@ abstract class BuilderAbstract implements BuilderInterface {
 	 * @param Model $Context
 	 * @return Decision_Builder_Abstract
 	 */
-	public function set_context_model(Model $Context) {
+	public function set_context_model(\Model $Context) {
 
 		$this->_Context = $Context;
 		return $this;

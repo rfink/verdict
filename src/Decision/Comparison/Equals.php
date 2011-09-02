@@ -19,20 +19,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Comparison;
+use Verdict\Decision\Comparison\ComparisonAbstract;
+
 /**
- * Compare our context and config for identity, i.e. same type and value
+ * Compare our given context and config for equality
  * @author rfink
  * @since  Feb 21, 2011
  */
-class Decision_Comparison_Identical extends Decision_Comparison_Abstract {
+class Equals extends ComparisonAbstract {
 
 	/**
-	 * (non-PHPdoc)
-	 * @see php/Decision/Comparison/Decision_Comparison_Interface#compare()
+	 * Compare our 2 values for equality (==)
+	 * @return boolean
 	 */
 	public function compare() {
 
-		return $this->_context === $this->_config;
+		return $this->_context == $this->_config;
 
 	}
 

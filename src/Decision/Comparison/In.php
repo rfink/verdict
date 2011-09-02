@@ -19,20 +19,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Comparison\In;
+use Verdict\Decision\Comparison\ComparisonAbstract;
+
 /**
- * Compare our given context and config for equality
+ * Check to see if our context is in the config array
  * @author rfink
- * @since  Feb 21, 2011
+ * @since  Feb 22, 2011
  */
-class Decision_Comparison_Equals extends Decision_Comparison_Abstract {
+class In extends ComparisonAbstract {
+
 
 	/**
-	 * Compare our 2 values for equality (==)
-	 * @return boolean
+	 * (non-PHPdoc)
+	 * @see php/Decision/Comparison/Decision_Comparison_Abstract#set_config($config)
+	 */
+	public function set_config($configVal) {
+
+		if (!is_array($configVal)) {
+
+			throw new \InvalidArgumentException('Configuration must be an array');
+
+		}
+
+		parent::set_config($configVal);
+		return $this;
+
+	}
+
+
+	/**
+	 * (non-PHPdoc)
+	 * @see php/Decision/Comparison/Decision_Comparison_Interface#compare()
 	 */
 	public function compare() {
 
-		return $this->_context == $this->_config;
+		return in_array($this->_context, $this->_config);
 
 	}
 

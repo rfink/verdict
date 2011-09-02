@@ -19,12 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Comparison;
+use Verdict\Decision\Comparison\ComparisonInterface;
+
 /**
  * Abstract base class for comparison classes
  * @author rfink
  * @since  Feb 21, 2011
  */
-abstract class Decision_Comparison_Abstract implements Decision_Comparison_Interface {
+abstract class ComparisonAbstract implements ComparisonInterface {
 
 	/**
 	 * Our context (actual variable)
