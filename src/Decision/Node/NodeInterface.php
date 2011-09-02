@@ -27,7 +27,7 @@ use Verdict\Decision\Node\NodeAbstract;
  * @author rfink
  * @since  Mar 13, 2011
  */
-interface Decision_Node_Interface {
+interface NodeInterface {
 
 	/**
 	 * Add node to our internal array

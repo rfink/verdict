@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../../bootstrap.php');
 
+use Verdict\Decision\Comparison\In;
+
 /**
  * Run unit tests on our comparison "In" array operator
  * @author rfink
@@ -16,7 +18,7 @@ class Decision_Comparison_In_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_basic() {
 
-		$Comparison = new Decision_Comparison_In('1', array('1', '2', '3'));
+		$Comparison = new In('1', array('1', '2', '3'));
 		$this->assertTrue($Comparison->compare());
 
 	}
@@ -28,7 +30,7 @@ class Decision_Comparison_In_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_non_array_fails() {
 
-		$Comparison = new Decision_Comparison_In(1, 1);
+		$Comparison = new In(1, 1);
 
 	}
 
@@ -39,7 +41,7 @@ class Decision_Comparison_In_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_empty_array() {
 
-		$Comparison = new Decision_Comparison_In(1, array());
+		$Comparison = new In(1, array());
 		$this->assertFalse($Comparison->Compare());
 
 	}

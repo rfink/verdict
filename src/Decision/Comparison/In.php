@@ -19,7 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Verdict\Decision\Comparison\In;
+namespace Verdict\Decision\Comparison;
 use Verdict\Decision\Comparison\ComparisonAbstract;
 
 /**

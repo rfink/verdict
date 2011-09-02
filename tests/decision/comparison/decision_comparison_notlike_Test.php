@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../../bootstrap.php');
 
+use Verdict\Decision\Comparison\NotLike;
+
 /**
  * Mocked class with a __toString method
  * @author rfink
@@ -35,7 +37,7 @@ class Decision_Comparison_NotLike_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_boolean() {
 
-		$Comparison = new Decision_Comparison_NotLike('test', 't');
+		$Comparison = new NotLike('test', 't');
 		$this->assertFalse($Comparison->compare());
 
 		$Comparison->set_context('string1')->set_config('string2');
@@ -54,7 +56,7 @@ class Decision_Comparison_NotLike_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_object_as_context_invalid() {
 
-		$Comparison = new Decision_Comparison_NotLike(new stdClass(), 'junk text');
+		$Comparison = new NotLike(new stdClass(), 'junk text');
 
 	}
 
@@ -66,7 +68,7 @@ class Decision_Comparison_NotLike_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_array_as_context_invalid() {
 
-		$Comparison = new Decision_Comparison_NotLike(array(), 'junk text');
+		$Comparison = new NotLike(array(), 'junk text');
 
 	}
 
@@ -78,7 +80,7 @@ class Decision_Comparison_NotLike_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_object_as_config_invalid() {
 
-		$Comparison = new Decision_Comparison_NotLike('junk text', new stdClass());
+		$Comparison = new NotLike('junk text', new stdClass());
 
 	}
 
@@ -90,7 +92,7 @@ class Decision_Comparison_NotLike_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_array_as_config_invalid() {
 
-		$Comparison = new Decision_Comparison_NotLike('junk text', array());
+		$Comparison = new NotLike('junk text', array());
 
 	}
 
@@ -101,7 +103,7 @@ class Decision_Comparison_NotLike_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_object_with_to_string() {
 
-		$Comparison = new Decision_Comparison_NotLike(new Mock_Class_With_ToString(), 'notcompare');
+		$Comparison = new NotLike(new Mock_Class_With_ToString(), 'notcompare');
 		$this->assertTrue($Comparison->compare());
 		$this->assertFalse($Comparison->set_config('test')->compare());
 

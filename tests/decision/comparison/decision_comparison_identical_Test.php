@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../../bootstrap.php');
 
+use Verdict\Decision\Comparison\Identical;
+
 /**
  * Test our identical comparison
  * @author rfink
@@ -16,7 +18,7 @@ class Decision_Comparison_Identical_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_basic() {
 
-		$Comparison = new Decision_Comparison_Identical(1, 1);
+		$Comparison = new Identical(1, 1);
 		$this->assertTrue($Comparison->compare());
 
 		$Comparison->set_context(array(1))->set_config(array(1));
@@ -34,7 +36,7 @@ class Decision_Comparison_Identical_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_objects() {
 
-		$Comparison = new Decision_Comparison_Identical(1, 1);
+		$Comparison = new Identical(1, 1);
 
 		$Comparison->set_context((object) array('FirstVar' => 'yay'))
 			->set_config((object) array('FirstVar' => 'yay'));
@@ -63,7 +65,7 @@ class Decision_Comparison_Identical_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_types() {
 
-		$Comparison = new Decision_Comparison_Identical(1, '1');
+		$Comparison = new Identical(1, '1');
 		$this->assertFalse($Comparison->compare());
 
 	}

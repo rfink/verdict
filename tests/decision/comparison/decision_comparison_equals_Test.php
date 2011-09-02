@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../../bootstrap.php');
 
+use Verdict\Decision\Comparison\Equals;
+
 /**
  * Test our equals comparison
  * @author rfink
@@ -16,7 +18,7 @@ class Decision_Comparison_Equals_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_boolean() {
 
-		$Comparison = new Decision_Comparison_Equals(TRUE, TRUE);
+		$Comparison = new Equals(TRUE, TRUE);
 		$this->assertTrue($Comparison->compare());
 
 	}
@@ -28,10 +30,10 @@ class Decision_Comparison_Equals_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_different_types_same_value() {
 
-		$Comparison = new Decision_Comparison_Equals(TRUE, 1);
+		$Comparison = new Equals(TRUE, 1);
 		$this->assertTrue($Comparison->compare());
 
-		$Comparison = new Decision_Comparison_Equals('1', 1);
+		$Comparison = new Equals('1', 1);
 		$this->assertTrue($Comparison->compare());
 
 	}
@@ -43,7 +45,7 @@ class Decision_Comparison_Equals_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_not_equal_values() {
 
-		$Comparison = new Decision_Comparison_Equals(3, 2);
+		$Comparison = new Equals(3, 2);
 		$this->assertFalse($Comparison->compare());
 
 	}

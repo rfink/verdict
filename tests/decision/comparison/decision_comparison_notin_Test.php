@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../../bootstrap.php');
 
+use Verdict\Decision\Comparison\NotIn;
+
 /**
  * Run unit tests on our comparison "Not In" array operator
  * @author rfink
@@ -15,10 +17,10 @@ class Decision_Comparison_NotIn_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_basic() {
 
-		$Comparison = new Decision_Comparison_NotIn('4', array('1', '2', '3'));
+		$Comparison = new NotIn('4', array('1', '2', '3'));
 		$this->assertTrue($Comparison->compare());
 
-		$Comparison = new Decision_Comparison_NotIn('1', array('1', '2'));
+		$Comparison = new NotIn('1', array('1', '2'));
 		$this->assertFalse($Comparison->compare());
 
 	}
@@ -30,7 +32,7 @@ class Decision_Comparison_NotIn_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_non_array_fails() {
 
-		$Comparison = new Decision_Comparison_NotIn(1, 1);
+		$Comparison = new NotIn(1, 1);
 
 	}
 
@@ -41,7 +43,7 @@ class Decision_Comparison_NotIn_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_empty_array() {
 
-		$Comparison = new Decision_Comparison_NotIn(1, array());
+		$Comparison = new NotIn(1, array());
 		$this->assertTrue($Comparison->Compare());
 
 	}

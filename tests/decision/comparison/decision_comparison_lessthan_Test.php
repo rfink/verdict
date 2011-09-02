@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../../bootstrap.php');
 
+use Verdict\Decision\Comparison\LessThan;
+
 /**
  * Test our less than comparison
  * @author rfink
@@ -16,7 +18,7 @@ class Decision_Comparison_LessThan_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_basic() {
 
-		$Comparison = new Decision_Comparison_LessThan(1, 2);
+		$Comparison = new LessThan(1, 2);
 		$this->assertTrue($Comparison->compare());
 
 		$Comparison->set_context('Y')->set_config('y');

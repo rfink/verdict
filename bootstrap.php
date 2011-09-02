@@ -29,7 +29,7 @@ define('PEAR_DIRECTORY', '/usr/share/pear');
  * @author rfink
  * @since  Mar 21, 2011
  */
-class Verdict_Autoloader {
+class VerdictAutoloader {
 
 	/**
 	 * Run our autoloading functionality
@@ -37,9 +37,14 @@ class Verdict_Autoloader {
 	 * @return boolean
 	 */
 	public static function load($className) {
-
-		$dirString = implode(DIRECTORY_SEPARATOR, explode('_', $className, -1));
-		$fileName = VERDICT_DIRECTORY . DIRECTORY_SEPARATOR . $dirString . DIRECTORY_SEPARATOR . $className . '.php';
+		
+		// Explode on our namespace char, and shift off "verdict"
+		$dirArray = explode('\\', $className);
+		array_shift($dirArray);
+		
+		// Join back together using the directory separator
+		$dirString = implode(DIRECTORY_SEPARATOR, $dirArray);
+		$fileName = VERDICT_DIRECTORY . DIRECTORY_SEPARATOR . $dirString . '.php';
 
 		if (file_exists($fileName)) {
 
@@ -55,6 +60,5 @@ class Verdict_Autoloader {
 }
 
 // Add our autoload class onto the SPL autoload stack
-spl_autoload_register(array('Verdict_Autoloader', 'load'));
+spl_autoload_register(array('VerdictAutoloader', 'load'));
 set_include_path(get_include_path() . PATH_SEPARATOR . PEAR_DIRECTORY);
-

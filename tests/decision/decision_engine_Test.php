@@ -2,6 +2,11 @@
 
 require_once(dirname(__FILE__) . '/../../bootstrap.php');
 
+use Verdict\Decision\Engine;
+use Verdict\Decision\Node\Branch;
+use Verdict\Decision\Node\Leaf;
+use Verdict\Decision\Comparison\Equals;
+
 /**
  * Testing the base class of the decision engine
  * @author rfink
@@ -22,7 +27,7 @@ class Decision_Engine_Test extends PHPUnit_Framework_TestCase {
 	protected function setUp() {
 
 		parent::setUp();
-		$this->_Engine = new Decision_Engine();
+		$this->_Engine = new Engine();
 
 	}
 
@@ -33,11 +38,11 @@ class Decision_Engine_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_single_node() {
 
-		$Condition = new Decision_Comparison_Equals(TRUE, TRUE);
+		$Condition = new Equals(TRUE, TRUE);
 
-		$Leaf = new Decision_Node_Leaf();
+		$Leaf = new Leaf();
 
-		$Node = new Decision_Node_Branch();
+		$Node = new Branch();
 		$Node->set_condition_node($Condition);
 		$Node->add_node($Leaf);
 

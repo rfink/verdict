@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../../bootstrap.php');
 
+use Verdict\Decision\Comparison\GreaterThan;
+
 /**
  * Test our greater than comparison
  * @author rfink
@@ -16,7 +18,7 @@ class Decision_Comparison_GreaterThan_Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_basic() {
 
-		$Comparison = new Decision_Comparison_GreaterThan(2, 1);
+		$Comparison = new GreaterThan(2, 1);
 		$this->assertTrue($Comparison->compare());
 
 		$Comparison->set_context('y')->set_config('Y');
