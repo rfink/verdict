@@ -19,12 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Operator;
+use Verdict\Decision\Operator\OperatorAbstract;
+
 /**
  * Operator driver for comparing our left node to our right node using "XOR"
  * @author rfink
  * @since  Mar 21, 2011
  */
-class Decision_Operator_Xor extends Decision_Operator_Abstract {
+class OpXor extends OperatorAbstract {
 
 	/**
 	 * Execute our comparison using the logical 'XOR'

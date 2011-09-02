@@ -19,13 +19,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Operator;
+use Verdict\Decision\Operator\OperatorAbstract;
+use Verdict\Decision\Node\NodeAbstract;
+
 /**
- * Leaf node for decisions, contain other decisions
+ * Interface defining public method access to a decision operator object
  * @author rfink
  * @since  Mar 13, 2011
  */
-class Decision_Node_Branch extends Decision_Node_Abstract {
+interface OperatorInterface {
 
+	/**
+	 * Set our left node to evaluate on the object
+	 * @param NodeAbstract $Node
+	 * @return OperatorInterface
+	 */
+	public function set_left_node(NodeAbstract $Node);
 
+	/**
+	 * Set our right node to evaluate on the object
+	 * @param NodeAbstract $Node
+	 * @return OperatorInterface
+	 */
+	public function set_right_node(NodeAbstract $Node);
+
+	/**
+	 * Execute our comparison and return the boolean result
+	 * @return boolean
+	 */
+	public function compare();
 
 }

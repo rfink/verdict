@@ -19,20 +19,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Operator;
+use Verdict\Decision\Operator\OperatorAbstract;
+
 /**
- * Operator driver for comparing two decision results using "AND"
+ * Operator driver for comparing the left and right nodes using "OR"
  * @author rfink
  * @since  Mar 21, 2011
  */
-class Decision_Operator_And extends Decision_Operator_Abstract {
+class OpOr extends OperatorAbstract {
 
 	/**
-	 * Compare our left with our right node using logical 'AND'
+	 * Execute our comparison using logical 'OR'
 	 * @return boolean
 	 */
 	public function compare() {
 
-		return $this->_LeftNode->compare() && $this->_RightNode->compare();
+		return $this->_LeftNode->compare() || $this->_RightNode->compare();
 
 	}
 

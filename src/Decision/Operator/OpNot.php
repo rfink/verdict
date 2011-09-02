@@ -19,24 +19,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Operator;
+use Verdict\Decision\Operator\OperatorAbstract;
+
 /**
- * Interface defining public access to decision nodes
+ * Operator driver for evaluating the inverse of the left node comparison result
  * @author rfink
- * @since  Mar 13, 2011
+ * @since  Mar 21, 2011
  */
-interface Decision_Node_Interface {
+class OpNot extends OperatorAbstract {
 
 	/**
-	 * Add node to our internal array
-	 * @param Decision_Node_Abstract $Node
-	 * @return Decision_Node_Abstract
+	 * Execute our comparison
+	 * @return boolean
 	 */
-	public function add_node(Decision_Node_Abstract $Node);
+	public function compare() {
 
-	/**
-	 * Evaluate our decision
-	 * @return Decision_Node_Value
-	 */
-	public function evaluate();
+		return !$this->_LeftNode->compare();
+
+	}
 
 }

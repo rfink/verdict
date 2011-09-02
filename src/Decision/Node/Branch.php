@@ -19,21 +19,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Node;
+use Verdict\Decision\Node\NodeAbstract;
+
 /**
- * Operator driver for evaluating the inverse of the left node comparison result
+ * Leaf node for decisions, contain other decisions
  * @author rfink
- * @since  Mar 21, 2011
+ * @since  Mar 13, 2011
  */
-class Decision_Operator_Not extends Decision_Operator_Abstract {
+class Branch extends NodeAbstract {
 
-	/**
-	 * Execute our comparison
-	 * @return boolean
-	 */
-	public function compare() {
 
-		return !$this->_LeftNode->compare();
-
-	}
 
 }

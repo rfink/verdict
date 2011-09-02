@@ -19,31 +19,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Node;
+use Verdict\Decision\Node\NodeAbstract;
+
 /**
- * Interface defining public method access to a decision operator object
+ * Interface defining public access to decision nodes
  * @author rfink
  * @since  Mar 13, 2011
  */
-interface Decision_Operator_Interface {
+interface Decision_Node_Interface {
 
 	/**
-	 * Set our left node to evaluate on the object
-	 * @param Decision_Node_Abstract $Node
-	 * @return Decision_Operator_Interface
+	 * Add node to our internal array
+	 * @param NodeAbstract $Node
+	 * @return NodeAbstract
 	 */
-	public function set_left_node(Decision_Node_Abstract $Node);
+	public function add_node(NodeAbstract $Node);
 
 	/**
-	 * Set our right node to evaluate on the object
-	 * @param Decision_Node_Abstract $Node
-	 * @return Decision_Operator_Interface
+	 * Evaluate our decision
+	 * @return Value
 	 */
-	public function set_right_node(Decision_Node_Abstract $Node);
-
-	/**
-	 * Execute our comparison and return the boolean result
-	 * @return boolean
-	 */
-	public function compare();
+	public function evaluate();
 
 }

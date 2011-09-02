@@ -19,12 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Node;
+use Verdict\Decision\Node\NodeAbstract;
+
 /**
  * Class for decision node for value nodes (final decision)
  * @author rfink
  * @since  Mar 13, 2011
  */
-class Decision_Node_Leaf extends Decision_Node_Abstract {
+class Leaf extends NodeAbstract {
 
 	/**
 	 * Contains the value that is desired by the tree
@@ -53,7 +56,7 @@ class Decision_Node_Leaf extends Decision_Node_Abstract {
 	public function evaluate() {
 
 		// TODO: What if we have NO condition?
-		if (!($this->_ConditionNode instanceof Decision_Comparison_Interface)) {
+		if (!($this->_ConditionNode instanceof ComparisonInterface)) {
 
 			return $this;
 

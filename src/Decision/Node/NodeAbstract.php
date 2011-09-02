@@ -19,12 +19,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace Verdict\Decision\Node;
+use Verdict\Decision\Node\NodeInterface;
+use Verdict\Decision\Node\Leaf;
+use Verdict\Decision\Node\Branch;
+use Verdict\Decision\Comparison\ComparisonAbstract;
+
 /**
  * Abstract base class for decision node classes
  * @author rfink
  * @since  Mar 13, 2011
  */
-abstract class Decision_Node_Abstract implements Decision_Node_Interface {
+abstract class NodeAbstract implements NodeInterface {
 
 	/**
 	 * Array of child nodes
@@ -34,13 +40,13 @@ abstract class Decision_Node_Abstract implements Decision_Node_Interface {
 
 	/**
 	 * Condition node, when evaluated, returns TRUE or FALSE
-	 * @var Decision_Comparison_Abstract
+	 * @var ComparisonAbstract
 	 */
 	protected $_ConditionNode = null;
 
 	/**
 	 * Pointer to our parent node
-	 * @var Decision_Node_Branch
+	 * @var Branch
 	 */
 	protected $_ParentNode = null;
 
@@ -53,10 +59,10 @@ abstract class Decision_Node_Abstract implements Decision_Node_Interface {
 
 	/**
 	 * Set a pointer to our parent node
-	 * @param Decision_Node_Branch $Node
-	 * @return Decision_Node_Abstract
+	 * @param Branch $Node
+	 * @return NodeAbstract
 	 */
-	public function set_parent_node(Decision_Node_Branch $Node) {
+	public function set_parent_node(Branch $Node) {
 
 		$this->_ParentNode = $Node;
 		return $this;
@@ -92,7 +98,7 @@ abstract class Decision_Node_Abstract implements Decision_Node_Interface {
 	 * (non-PHPdoc)
 	 * @see php/Decision/Node/Decision_Node_Interface#add_node($Node)
 	 */
-	public function add_node(Decision_Node_Abstract $Node) {
+	public function add_node(NodeAbstract $Node) {
 
 		$this->_nodesArray[] = $Node;
 		return $this;
@@ -102,10 +108,10 @@ abstract class Decision_Node_Abstract implements Decision_Node_Interface {
 
 	/**
 	 * Set our condition node on the object
-	 * @param Decision_Comparison_Abstract $Node
-	 * @return Decision_Node_Abstract
+	 * @param ComparisonAbstract $Node
+	 * @return NodeAbstract
 	 */
-	public function set_condition_node(Decision_Comparison_Abstract $Node) {
+	public function set_condition_node(ComparisonAbstract $Node) {
 
 		$this->_ConditionNode = $Node;
 		return $this;
@@ -134,7 +140,7 @@ abstract class Decision_Node_Abstract implements Decision_Node_Interface {
 
 			$Value = $Node->evaluate();
 
-			if ($Value instanceof Decision_Node_Leaf) {
+			if ($Value instanceof Leaf) {
 
 				return $Value;
 
