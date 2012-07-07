@@ -1,7 +1,0 @@
-'''
-
-'''
-
-class Leaf(NodeAbstract):
-	
-	pass
